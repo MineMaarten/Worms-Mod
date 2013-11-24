@@ -14,7 +14,7 @@ public class Items{
     public static void init(CreativeTabs wormsTab){
         grenade = new ItemGrenade(Config.grenadeID).setUnlocalizedName("Grenade").setCreativeTab(wormsTab);
         clusterBomb = new ItemClusterBomb(Config.clusterBombID).setUnlocalizedName("ClusterBomb").setCreativeTab(wormsTab);
-        bananaBomb = new ItemBananaBomb(Config.clusterBombID).setUnlocalizedName("BananaBomb").setCreativeTab(wormsTab);
+        bananaBomb = new ItemBananaBomb(Config.bananaBombID).setUnlocalizedName("BananaBomb").setCreativeTab(wormsTab);
 
         GameRegistry.registerItem(grenade, "Grenade");
         GameRegistry.registerItem(clusterBomb, "ClusterBomb");

@@ -74,6 +74,7 @@ public abstract class ItemWormChargable extends Item{
 
     @Override
     public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4){
-        infoList.add("Shift right click to change the length of the fuse.");
+        infoList.add("Shift right click to change");
+        infoList.add("the length of the fuse.");
     }
 }

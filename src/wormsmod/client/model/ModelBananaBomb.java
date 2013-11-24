@@ -4,6 +4,8 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
+import org.lwjgl.opengl.GL11;
+
 public class ModelBananaBomb extends ModelBase implements IBaseModel{
     //fields
     ModelRenderer Shape1;
@@ -77,6 +79,8 @@ public class ModelBananaBomb extends ModelBase implements IBaseModel{
 
     @Override
     public void renderModel(float size){
+        GL11.glTranslatef(0, 0.5F, 0);
+        size *= 0.7F;
         Shape1.render(size);
         Shape2.render(size);
         Shape3.render(size);

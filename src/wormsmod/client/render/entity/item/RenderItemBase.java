@@ -39,7 +39,7 @@ public class RenderItemBase implements IItemRenderer{
 
         switch(type){
             case ENTITY: {
-                render(0.0F, 0.0F, 1.0F, 1.0F);
+                render(0.0F, 0.0F, 1.3F, 1.0F);
                 return;
             }
             case EQUIPPED: {
