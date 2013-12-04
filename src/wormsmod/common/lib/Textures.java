@@ -10,6 +10,8 @@ public class Textures{
     public static final ResourceLocation MODEL_GRENADE = new ResourceLocation(MODEL_LOCATION + "Grenade.png");
     public static final ResourceLocation MODEL_CLUSTER_BOMB = new ResourceLocation(MODEL_LOCATION + "ClusterBomb.png");
     public static final ResourceLocation MODEL_BANANA_BOMB = new ResourceLocation(MODEL_LOCATION + "BananaBomb.png");
+    public static final ResourceLocation MODEL_AIR_PLANE = new ResourceLocation(MODEL_LOCATION + "AirPlane.png");
+    public static final ResourceLocation MODEL_COW = new ResourceLocation("textures/entity/cow/cow.png");
 
     public static final ResourceLocation GUI_CHARGE = new ResourceLocation(GUI_LOCATION + "ColoredCharge.png");
 

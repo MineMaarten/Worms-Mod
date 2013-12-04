@@ -21,4 +21,8 @@ public class WeaponCharacteristics{
     public static final double BANANA_BOMB_ENTITY_DAMAGE = 0.4D;
     public static final int BANANA_BOMB_CLUSTERS = 4;
     public static final double BANANA_BOMB_CLUSTER_SPREAD = 0.5D;
+
+    public static final float BOVINE_BLITZ_ENVIRONMENT_DAMAGE = 3F;
+    public static final double BOVINE_BLITZ_ENTITY_PROPEL = 0.5D;
+    public static final double BOVINE_BLITZ_ENTITY_DAMAGE = 1D;
 }

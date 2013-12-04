@@ -2,7 +2,9 @@ package wormsmod.common;
 
 import net.minecraft.creativetab.CreativeTabs;
 import wormsmod.client.CreativeTabWorms;
+import wormsmod.common.entity.EntityAirPlane;
 import wormsmod.common.entity.projectile.impact.EntityBananaBombCluster;
+import wormsmod.common.entity.projectile.impact.EntityBlitzCow;
 import wormsmod.common.entity.projectile.impact.EntityClusterBombCluster;
 import wormsmod.common.entity.projectile.timed.EntityBananaBomb;
 import wormsmod.common.entity.projectile.timed.EntityClusterBomb;
@@ -67,8 +69,8 @@ public class WormsMod{
         EntityRegistry.registerModEntity(EntityClusterBombCluster.class, "ClusterBombCluster", 2, this, 200, 1, true);
         EntityRegistry.registerModEntity(EntityBananaBomb.class, "BananaBomb", 3, this, 200, 1, true);
         EntityRegistry.registerModEntity(EntityBananaBombCluster.class, "BananaBombCluster", 4, this, 200, 1, true);
-        // Entity Eggs:
-        //registerEntityEgg(EntityStraightArrow.class, 0xffffff, 0x000000);
+        EntityRegistry.registerModEntity(EntityAirPlane.class, "AirPlane", 5, this, 200, 1, true);
+        EntityRegistry.registerModEntity(EntityBlitzCow.class, "BlitzCow", 6, this, 200, 1, true);
 
         // worldgenerators
         GameRegistry.registerWorldGenerator(new WorldGenerator());

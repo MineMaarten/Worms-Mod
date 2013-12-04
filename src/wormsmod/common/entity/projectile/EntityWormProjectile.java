@@ -87,7 +87,7 @@ public abstract class EntityWormProjectile extends EntityItem{
      * Base explosion
      */
     public void explode(){
-        explode(WeaponCharacteristics.BASE_EXPLOSION_ENVIRONMENT_DAMAGE, WeaponCharacteristics.BASE_EXPLOSION_ENVIRONMENT_DAMAGE, WeaponCharacteristics.BASE_EXPLOSION_ENTITY_PROPEL);
+        explode(WeaponCharacteristics.BASE_EXPLOSION_ENVIRONMENT_DAMAGE, WeaponCharacteristics.BASE_EXPLOSION_ENTITY_DAMAGE, WeaponCharacteristics.BASE_EXPLOSION_ENTITY_PROPEL);
     }
 
     public void explode(float baseDamage, double entityDamage, double entityPropel){
