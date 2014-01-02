@@ -79,6 +79,9 @@ public abstract class EntityWormProjectile extends EntityItem{
         delayBeforeCanPickup = 20; //make sure the player never will be able to pick up an armed weapon.
         super.onUpdate();
         if(isCollided) onImpact();
+        if(worldObj.isRemote) {
+            updateHeading();
+        }
     }
 
     protected void onImpact(){}
@@ -118,6 +121,17 @@ public abstract class EntityWormProjectile extends EntityItem{
     @Override
     public boolean combineItems(EntityItem item){
         return false;
+    }
+
+    private void updateHeading(){
+        double par1 = motionX, par3 = motionY, par5 = motionZ;
+        float f2 = MathHelper.sqrt_double(par1 * par1 + par3 * par3 + par5 * par5);
+        par1 /= f2;
+        par3 /= f2;
+        par5 /= f2;
+        float f3 = MathHelper.sqrt_double(par1 * par1 + par5 * par5);
+        prevRotationYaw = rotationYaw = (float)(Math.atan2(par1, par5) * 180.0D / Math.PI);
+        prevRotationPitch = rotationPitch = (float)(Math.atan2(par3, f3) * 180.0D / Math.PI);
     }
 
 }

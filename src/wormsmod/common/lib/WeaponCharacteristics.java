@@ -25,4 +25,9 @@ public class WeaponCharacteristics{
     public static final float BOVINE_BLITZ_ENVIRONMENT_DAMAGE = 3F;
     public static final double BOVINE_BLITZ_ENTITY_PROPEL = 0.5D;
     public static final double BOVINE_BLITZ_ENTITY_DAMAGE = 1D;
+
+    public static final float AIR_STRIKE_ENVIRONMENT_DAMAGE = 2F;
+    public static final double AIR_STRIKE_ENTITY_PROPEL = 0.5D;
+    public static final double AIR_STRIKE_ENTITY_DAMAGE = 1D;
+
 }

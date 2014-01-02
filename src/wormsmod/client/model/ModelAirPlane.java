@@ -4,6 +4,8 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
+import org.lwjgl.opengl.GL11;
+
 public class ModelAirPlane extends ModelBase{
     //fields
     ModelRenderer Base;
@@ -220,6 +222,7 @@ public class ModelAirPlane extends ModelBase{
     }
 
     public void renderModel(float size, float rotation){
+        GL11.glTranslated(0, -20 / 16F, -0.5F);
         MainRotor.rotateAngleY = rotation;
         TailRotor.rotateAngleX = rotation;
         TailRotor.render(size);

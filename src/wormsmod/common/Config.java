@@ -10,6 +10,8 @@ public class Config{
     public static int clusterBombID;
     public static int bananaBombID;
     public static int bovineBlitzID;
+    public static int airStrikeID;
+    public static int holyHandGrenadeID;
 
     public static void init(File configFile){
         Configuration config = new Configuration(configFile);
@@ -20,6 +22,8 @@ public class Config{
         clusterBombID = config.getItem("Cluster Bomb ID", 12801).getInt();
         bananaBombID = config.getItem("Banana Bomb ID", 12802).getInt();
         bovineBlitzID = config.getItem("Bovine Blitz ID", 12803).getInt();
+        airStrikeID = config.getItem("Air Strike ID", 12804).getInt();
+        holyHandGrenadeID = config.getItem("Holy Hand Grenade ID", 12805).getInt();
 
         config.save();
     }

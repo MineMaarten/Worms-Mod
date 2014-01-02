@@ -7,6 +7,7 @@ public class EntityBlitzCow extends EntityWormImpactProjectile{
 
     public EntityBlitzCow(World world){
         super(world);
+        setSize(0.9F, 1.3F);
     }
 
     @Override

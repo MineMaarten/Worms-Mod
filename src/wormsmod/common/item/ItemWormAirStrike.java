@@ -1,5 +1,8 @@
 package wormsmod.common.item;
 
+import java.util.List;
+
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -8,12 +11,23 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 import wormsmod.common.entity.EntityAirPlane;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public abstract class ItemWormAirStrike extends Item{
     public static final double REACH = 128;
 
     public ItemWormAirStrike(int par1){
         super(par1);
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    /**
+     * returns a list of items with the same ID, but different meta (eg: dye returns 16 items)
+     */
+    public void getSubItems(int par1, CreativeTabs par2CreativeTabs, List par3List){
+        par3List.add(new ItemStack(par1, 1, 2));
     }
 
     /**

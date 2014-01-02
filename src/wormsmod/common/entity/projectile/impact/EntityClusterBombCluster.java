@@ -19,6 +19,6 @@ public class EntityClusterBombCluster extends EntityWormImpactProjectile{
 
     @Override
     public void explode(){
-        explode(WeaponCharacteristics.CLUSTER_BOMB_ENVIRONMENT_DAMAGE, WeaponCharacteristics.CLUSTER_BOMB_ENVIRONMENT_DAMAGE, WeaponCharacteristics.CLUSTER_BOMB_ENTITY_PROPEL);
+        explode(WeaponCharacteristics.CLUSTER_BOMB_ENVIRONMENT_DAMAGE, WeaponCharacteristics.CLUSTER_BOMB_ENTITY_DAMAGE, WeaponCharacteristics.CLUSTER_BOMB_ENTITY_PROPEL);
     }
 }

@@ -20,12 +20,13 @@ public class RenderAirPlane extends Render{
 
     @Override
     public void doRender(Entity entity, double d0, double d1, double d2, float f, float f1){
+        EntityAirPlane plane = (EntityAirPlane)entity;
         bindEntityTexture(entity);
         GL11.glPushMatrix();
         GL11.glTranslated(d0, d1, d2);
-        GL11.glRotated(180, 0, 1, 0);
-        EntityAirPlane plane = (EntityAirPlane)entity;
+        GL11.glRotated(180 + Math.sin(plane.oldYawProgress + (plane.yawProgress - plane.oldYawProgress) * f1) * 10, 0, 1, 0);
         Utils.rotateMatrixByMetadata(plane.getPlaneDirection().ordinal());
+        GL11.glRotated(Math.sin(plane.pitchProgress) * 10, 1, 0, 0);
         GL11.glScaled(-1, -1, 1);
         model.renderModel(1 / 16F, plane.oldRotorRotation + (plane.rotorRotation - plane.oldRotorRotation) * f1);
         GL11.glPopMatrix();
