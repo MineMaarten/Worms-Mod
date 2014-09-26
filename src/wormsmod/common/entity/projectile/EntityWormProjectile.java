@@ -6,7 +6,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.network.packet.Packet60Explosion;
+import net.minecraft.network.play.server.S27PacketExplosion;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
@@ -109,7 +109,7 @@ public abstract class EntityWormProjectile extends EntityItem{
                 EntityPlayer entityplayer = (EntityPlayer)iterator.next();
 
                 if(entityplayer.getDistanceSq(posX, posY, posZ) < 4096.0D) {
-                    ((EntityPlayerMP)entityplayer).playerNetServerHandler.sendPacketToPlayer(new Packet60Explosion(posX, posY, posZ, baseDamage, explosion.affectedBlockPositions, (Vec3)explosion.func_77277_b().get(entityplayer)));
+                    ((EntityPlayerMP)entityplayer).playerNetServerHandler.sendPacket(new S27PacketExplosion(posX, posY, posZ, baseDamage, explosion.affectedBlockPositions, (Vec3)explosion.func_77277_b().get(entityplayer)));
                 }
             }
 

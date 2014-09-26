@@ -1,12 +1,9 @@
 package wormsmod.client.render;
 
-import java.util.EnumSet;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 import org.lwjgl.opengl.GL11;
@@ -15,29 +12,24 @@ import wormsmod.common.item.ItemWormChargable;
 import wormsmod.common.lib.Constants;
 import wormsmod.common.lib.Textures;
 import cpw.mods.fml.client.FMLClientHandler;
-import cpw.mods.fml.common.ITickHandler;
-import cpw.mods.fml.common.TickType;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.TickEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class ProjectileChargeRenderer implements ITickHandler{
-    @Override
-    public void tickStart(EnumSet<TickType> type, Object... tickData){
-
-    }
-
-    @Override
-    public void tickEnd(EnumSet<TickType> type, Object... tickData){
-        if(type.contains(TickType.RENDER)) {
+public class ProjectileChargeRenderer{
+    @SubscribeEvent
+    public void onTick(TickEvent.RenderTickEvent event){
+        if(event.phase == TickEvent.Phase.END) {
             Minecraft minecraft = FMLClientHandler.instance().getClient();
             EntityPlayer player = minecraft.thePlayer;
             ItemStack heldStack = null;
-            Float partialTicks = (Float)tickData[0];
+            Float partialTicks = event.renderTickTime;
             if(player != null) {
                 heldStack = player.getCurrentEquippedItem();
-                if(heldStack != null && minecraft.inGameHasFocus && Item.itemsList[heldStack.getItem().itemID] instanceof ItemWormChargable) {
-                    ScaledResolution sr = new ScaledResolution(minecraft.gameSettings, minecraft.displayWidth, minecraft.displayHeight);
+                if(heldStack != null && minecraft.inGameHasFocus && heldStack.getItem() instanceof ItemWormChargable) {
+                    ScaledResolution sr = new ScaledResolution(minecraft, minecraft.displayWidth, minecraft.displayHeight);
                     // GL11.glDisable(GL11.GL_CULL_FACE);
                     //   GL11.glClear(GL11.GL_DEPTH_BUFFER_BIT);
 
@@ -73,18 +65,6 @@ public class ProjectileChargeRenderer implements ITickHandler{
         tessellator.addVertexWithUV(x + 0, y, zLevel, 0, 0);
         tessellator.draw();
 
-    }
-
-    @Override
-    public EnumSet<TickType> ticks(){
-
-        return EnumSet.of(TickType.RENDER);
-    }
-
-    @Override
-    public String getLabel(){
-
-        return "Worms Mod Projectile Charge Handler";
     }
 
 }

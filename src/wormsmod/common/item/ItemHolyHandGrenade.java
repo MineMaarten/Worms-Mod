@@ -7,10 +7,6 @@ import wormsmod.common.entity.projectile.EntityHolyHandGrenade;
 
 public class ItemHolyHandGrenade extends ItemWormChargable{
 
-    public ItemHolyHandGrenade(int par1){
-        super(par1);
-    }
-
     @Override
     protected EntityItem getProjectile(World world, EntityLivingBase throwingEntity, float chargeLevel){
         return new EntityHolyHandGrenade(world, throwingEntity, chargeLevel);

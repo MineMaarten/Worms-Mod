@@ -3,9 +3,9 @@ package wormsmod.common.entity;
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeDirection;
-import wormsmod.common.network.PacketHandler;
-import cpw.mods.fml.common.network.PacketDispatcher;
+import net.minecraftforge.common.util.ForgeDirection;
+import wormsmod.common.network.MessageMultiParticle;
+import wormsmod.common.network.NetworkHandler;
 
 public class EntityAirPlane extends Entity{
     protected static final double PLANE_SPEED = 0.4D;
@@ -89,7 +89,7 @@ public class EntityAirPlane extends Entity{
             double dropzoneDistance = getDistanceFromDropzone();
             if(dropzoneDistance < -DROPZONE_DISTANCE) {
                 setDead();
-                PacketDispatcher.sendPacketToAllAround(posX, posY, posZ, 64, worldObj.provider.dimensionId, PacketHandler.getMultiParticle(40, 2, "explode", posX, posY, posZ));
+                NetworkHandler.sendToAllAround(new MessageMultiParticle(40, 2, "explode", posX, posY, posZ), worldObj);
             } else if(dropzoneDistance < 0 && !droppedPayload) {
                 droppedPayload = true;
                 dropPayload();

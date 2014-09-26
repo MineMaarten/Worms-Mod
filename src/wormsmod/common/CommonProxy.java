@@ -14,6 +14,10 @@ public class CommonProxy implements IGuiHandler{
         return null;
     }
 
+    public EntityPlayer getPlayer(){
+        return null;
+    }
+
     public void registerHandlers(){}
 
     @Override

@@ -10,10 +10,6 @@ import wormsmod.common.entity.EntityBovineBlitz;
 
 public class ItemBovineBlitz extends ItemWormAirStrike{
 
-    public ItemBovineBlitz(int par1){
-        super(par1);
-    }
-
     @Override
     public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player){
         EntityBovineBlitz entity = getControlledPlane(world, stack);
@@ -34,7 +30,7 @@ public class ItemBovineBlitz extends ItemWormAirStrike{
     @Override
     protected EntityAirPlane getPlaneEntity(World world, ItemStack stack){
         EntityBovineBlitz bovineBlitz = new EntityBovineBlitz(world);
-        setControlledPlane(bovineBlitz.entityId, stack);
+        setControlledPlane(bovineBlitz.getEntityId(), stack);
         return bovineBlitz;
     }
 

@@ -1,7 +1,7 @@
 package wormsmod.common;
 
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 
 import org.lwjgl.opengl.GL11;
 

@@ -3,8 +3,8 @@ package wormsmod.common.entity;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import wormsmod.common.entity.projectile.impact.EntityAirStrikeMortar;
-import wormsmod.common.network.PacketHandler;
-import cpw.mods.fml.common.network.PacketDispatcher;
+import wormsmod.common.network.MessageMultiParticle;
+import wormsmod.common.network.NetworkHandler;
 
 public class EntityAirStrike extends EntityAirPlane{
     private int bombsLeft = 5;
@@ -36,7 +36,7 @@ public class EntityAirStrike extends EntityAirPlane{
                 airStrikeMortar.motionX = getPlaneDirection().offsetX * PLANE_SPEED;
                 airStrikeMortar.motionZ = getPlaneDirection().offsetZ * PLANE_SPEED;
                 worldObj.spawnEntityInWorld(airStrikeMortar);
-                PacketDispatcher.sendPacketToAllAround(posX, posY, posZ, 64, worldObj.provider.dimensionId, PacketHandler.getMultiParticle(20, 1, "explode", posX, posY - 0.5D, posZ));
+                NetworkHandler.sendToAllAround(new MessageMultiParticle(20, 1, "explode", posX, posY - 0.5D, posZ), worldObj);
             }
         }
     }

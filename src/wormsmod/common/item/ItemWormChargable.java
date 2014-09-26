@@ -7,15 +7,14 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import wormsmod.common.lib.Constants;
 
 public abstract class ItemWormChargable extends Item{
 
-    public ItemWormChargable(int par1){
-        super(par1);
-    }
+    public ItemWormChargable(){}
 
     /**
      * called when the player releases the use item button. Args: itemstack, world, entityplayer, itemInUseCount
@@ -61,7 +60,7 @@ public abstract class ItemWormChargable extends Item{
             } else {
                 stack.setItemDamage(0);
             }
-            if(!world.isRemote) player.addChatMessage(EnumChatFormatting.YELLOW + "Fuse: " + (stack.getItemDamage() + 1) + " seconds.");
+            if(!world.isRemote) player.addChatComponentMessage(new ChatComponentText(EnumChatFormatting.YELLOW + "Fuse: " + (stack.getItemDamage() + 1) + " seconds."));
         } else {
             player.setItemInUse(stack, getMaxItemUseDuration(stack));
         }

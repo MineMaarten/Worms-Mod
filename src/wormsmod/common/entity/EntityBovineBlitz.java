@@ -3,8 +3,8 @@ package wormsmod.common.entity;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import wormsmod.common.entity.projectile.impact.EntityBlitzCow;
-import wormsmod.common.network.PacketHandler;
-import cpw.mods.fml.common.network.PacketDispatcher;
+import wormsmod.common.network.MessageMultiParticle;
+import wormsmod.common.network.NetworkHandler;
 
 public class EntityBovineBlitz extends EntityAirPlane{
     private int payloadsLeft = 3;
@@ -26,7 +26,7 @@ public class EntityBovineBlitz extends EntityAirPlane{
     }
 
     public boolean releasePayload(){
-        PacketDispatcher.sendPacketToAllAround(posX, posY, posZ, 64, worldObj.provider.dimensionId, PacketHandler.getMultiParticle(30, 2, "explode", posX, posY, posZ));
+        NetworkHandler.sendToAllAround(new MessageMultiParticle(30, 2, "explode", posX, posY, posZ), worldObj);
         EntityBlitzCow blitzCow = new EntityBlitzCow(worldObj);
         //EntityTNTPrimed tnt = new EntityTNTPrimed(worldObj);
         //tnt.fuse = 100;

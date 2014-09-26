@@ -7,26 +7,26 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
-import net.minecraftforge.event.ForgeSubscribe;
 
 import org.lwjgl.opengl.GL11;
 
 import wormsmod.common.Utils;
 import wormsmod.common.item.ItemWormAirStrike;
 import cpw.mods.fml.client.FMLClientHandler;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class AirStrikeRenderer{
-    @ForgeSubscribe
+    @SubscribeEvent
     public void render3D(RenderWorldLastEvent event){
         Minecraft mc = FMLClientHandler.instance().getClient();
         EntityPlayer player = mc.thePlayer;
         if(player.getCurrentEquippedItem() != null && player.getCurrentEquippedItem().getItem() instanceof ItemWormAirStrike) {
             World world = mc.theWorld;
             //  System.out.println("posY: " + player.posY + ", eye: " + player.getEyeHeight() + ", offset: " + player.yOffset);
-            Vec3 entityVec = world.getWorldVec3Pool().getVecFromPool(player.posX, player.posY, player.posZ);
+            Vec3 entityVec = Vec3.createVectorHelper(player.posX, player.posY, player.posZ);
             Vec3 entityLookVec = player.getLookVec();
             Vec3 maxDistVec = entityVec.addVector(entityLookVec.xCoord * ItemWormAirStrike.REACH, entityLookVec.yCoord * ItemWormAirStrike.REACH, entityLookVec.zCoord * ItemWormAirStrike.REACH);
-            MovingObjectPosition hit = player.worldObj.clip(entityVec, maxDistVec);
+            MovingObjectPosition hit = player.worldObj.rayTraceBlocks(entityVec, maxDistVec);
             if(hit != null) {
                 GL11.glPushMatrix();
                 GL11.glTranslated(-player.posX, -player.posY, -player.posZ);

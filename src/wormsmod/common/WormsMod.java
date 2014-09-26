@@ -11,23 +11,20 @@ import wormsmod.common.entity.projectile.impact.EntityClusterBombCluster;
 import wormsmod.common.entity.projectile.timed.EntityBananaBomb;
 import wormsmod.common.entity.projectile.timed.EntityClusterBomb;
 import wormsmod.common.entity.projectile.timed.EntityGrenade;
-import wormsmod.common.item.Items;
-import wormsmod.common.network.PacketHandler;
+import wormsmod.common.item.Itemss;
+import wormsmod.common.network.NetworkHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.network.NetworkMod;
-import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 // TODO increase version
 @Mod(modid = "WormsMod", name = "Worms Mod", version = "0.1.0")
-@NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = {"wormsmod"}, packetHandler = PacketHandler.class)
 public class WormsMod{
 
     @SidedProxy(clientSide = "wormsmod.client.ClientProxy", serverSide = "wormsmod.common.CommonProxy")
@@ -42,12 +39,13 @@ public class WormsMod{
         proxy.registerHandlers();
 
         CreativeTabs wormsTab = new CreativeTabWorms("WormsMod");
-        Items.init(wormsTab);
+        Itemss.init(wormsTab);
+        NetworkHandler.init();
     }
 
     @EventHandler
     public void load(FMLInitializationEvent event){
-        NetworkRegistry.instance().registerGuiHandler(instance, proxy);
+        // NetworkRegistry.instance().registerGuiHandler(instance, proxy);
 
         gameRegisters();
         languageRegisters();
@@ -76,7 +74,7 @@ public class WormsMod{
         EntityRegistry.registerModEntity(EntityAirStrikeMortar.class, "AirStrikeMortar", 7, this, 200, 1, true);
         EntityRegistry.registerModEntity(EntityHolyHandGrenade.class, "HolyHandGrenade", 8, this, 200, 1, true);
         // worldgenerators
-        GameRegistry.registerWorldGenerator(new WorldGenerator());
+        GameRegistry.registerWorldGenerator(new WorldGenerator(), 0);
     }
 
     public void languageRegisters(){

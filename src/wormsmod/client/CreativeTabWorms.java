@@ -1,7 +1,8 @@
 package wormsmod.client;
 
 import net.minecraft.creativetab.CreativeTabs;
-import wormsmod.common.item.Items;
+import net.minecraft.item.Item;
+import wormsmod.common.item.Itemss;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -14,11 +15,8 @@ public class CreativeTabWorms extends CreativeTabs{
 
     @Override
     @SideOnly(Side.CLIENT)
-    /**
-     * the itemID for the item to be displayed on the tab
-     */
-    public int getTabIconItemIndex(){
-        return Items.grenade.itemID;
+    public Item getTabIconItem(){
+        return Itemss.grenade;
     }
 
 }

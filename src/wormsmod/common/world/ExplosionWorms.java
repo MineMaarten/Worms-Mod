@@ -68,15 +68,14 @@ public class ExplosionWorms extends Explosion{
                             int l = MathHelper.floor_double(d0);
                             int i1 = MathHelper.floor_double(d1);
                             int j1 = MathHelper.floor_double(d2);
-                            int k1 = worldObj.getBlockId(l, i1, j1);
+                            Block block = worldObj.getBlock(l, i1, j1);
 
-                            if(k1 > 0) {
-                                Block block = Block.blocksList[k1];
-                                float f3 = exploder != null ? exploder.getBlockExplosionResistance(this, worldObj, l, i1, j1, block) : block.getExplosionResistance(exploder, worldObj, l, i1, j1, explosionX, explosionY, explosionZ);
+                            if(!worldObj.isAirBlock(l, i1, j1)) {
+                                float f3 = exploder != null ? exploder.func_145772_a(this, worldObj, l, i1, j1, block) : block.getExplosionResistance(exploder, worldObj, l, i1, j1, explosionX, explosionY, explosionZ);
                                 f1 -= (f3 + 0.3F) * f2;
                             }
 
-                            if(f1 > 0.0F && (exploder == null || exploder.shouldExplodeBlock(this, worldObj, l, i1, j1, k1, f1))) {
+                            if(f1 > 0.0F && (exploder == null || exploder.func_145774_a(this, worldObj, l, i1, j1, block, f1))) {
                                 hashset.add(new ChunkPosition(l, i1, j1));
                             }
 
@@ -97,8 +96,8 @@ public class ExplosionWorms extends Explosion{
         int l1 = MathHelper.floor_double(explosionY + explosionSize + 1.0D);
         int i2 = MathHelper.floor_double(explosionZ - explosionSize - 1.0D);
         int j2 = MathHelper.floor_double(explosionZ + explosionSize + 1.0D);
-        List list = worldObj.getEntitiesWithinAABBExcludingEntity(exploder, AxisAlignedBB.getAABBPool().getAABB(i, k, i2, j, l1, j2));
-        Vec3 vec3 = worldObj.getWorldVec3Pool().getVecFromPool(explosionX, explosionY, explosionZ);
+        List list = worldObj.getEntitiesWithinAABBExcludingEntity(exploder, AxisAlignedBB.getBoundingBox(i, k, i2, j, l1, j2));
+        Vec3 vec3 = Vec3.createVectorHelper(explosionX, explosionY, explosionZ);
 
         for(int k2 = 0; k2 < list.size(); ++k2) {
             Entity entity = (Entity)list.get(k2);
@@ -123,7 +122,7 @@ public class ExplosionWorms extends Explosion{
                     entity.motionZ += d2 * d11;
 
                     if(entity instanceof EntityPlayer) {
-                        field_77288_k.put(entity, worldObj.getWorldVec3Pool().getVecFromPool(d0 * d10, d1 * d10, d2 * d10));
+                        field_77288_k.put(entity, Vec3.createVectorHelper(d0 * d10, d1 * d10, d2 * d10));
                     }
                 }
             }

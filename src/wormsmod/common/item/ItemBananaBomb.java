@@ -7,10 +7,6 @@ import wormsmod.common.entity.projectile.timed.EntityBananaBomb;
 
 public class ItemBananaBomb extends ItemWormChargable{
 
-    public ItemBananaBomb(int par1){
-        super(par1);
-    }
-
     @Override
     protected EntityItem getProjectile(World world, EntityLivingBase throwingEntity, float chargeLevel){
         return new EntityBananaBomb(world, throwingEntity, chargeLevel);
